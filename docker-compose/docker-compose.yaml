@@ -251,8 +251,8 @@ services:
   zoekt-indexserver-0:
     container_name: zoekt-indexserver-0
     image: 'index.docker.io/sourcegraph/search-indexer:5.3.9104@sha256:4f93878ee10160515e889cb4cda96feb302783811d998da1804f61047c021d02'
-    cpus: 8
-    mem_limit: '16g'
+    cpus: 4
+    mem_limit: '8g'
     environment:
       - 'HOSTNAME=zoekt-webserver-0:6070'
       - 'SRC_FRONTEND_INTERNAL=http://sourcegraph-frontend-internal:3090'
@@ -274,8 +274,8 @@ services:
   zoekt-webserver-0:
     container_name: zoekt-webserver-0
     image: 'index.docker.io/sourcegraph/indexed-searcher:5.3.9104@sha256:37a3992dcde42422ba579b48c3c9ef8b8fcb965175fa1f4c03c8ddc09dc5c52f'
-    cpus: 8
-    mem_limit: '50g'
+    cpus: 4
+    mem_limit: '8g'
     environment:
       - 'HOSTNAME=zoekt-webserver-0:6070'
       - 'OPENTELEMETRY_DISABLED=false'
@@ -398,7 +398,7 @@ services:
     container_name: syntect-server
     image: 'index.docker.io/sourcegraph/syntax-highlighter:5.3.9104@sha256:19a69d05b24c08491a09a70984810dc94f977125e48cdb94aedd14ac9888b756'
     cpus: 4
-    mem_limit: '6g'
+    mem_limit: '4g'
     healthcheck:
       test: "wget -q 'http://127.0.0.1:9238/health' -O /dev/null || exit 1"
       interval: 5s
@@ -724,7 +724,7 @@ services:
     container_name: redis-cache
     image: 'index.docker.io/sourcegraph/redis-cache:5.3.9104@sha256:85de57959d3c021871acf472b31590c5ef5d89891ab7619c7fb887ce54bb5731'
     cpus: 1
-    mem_limit: '7g'
+    mem_limit: '4g'
     volumes:
       - 'redis-cache:/redis-data'
     networks:
@@ -740,7 +740,7 @@ services:
     container_name: redis-store
     image: 'index.docker.io/sourcegraph/redis-store:5.3.9104@sha256:9333cffe538eefb9cfbbd99bedd77fb655402f2bf1b231a3774cd0f876c4ce02'
     cpus: 1
-    mem_limit: '7g'
+    mem_limit: '4g'
     volumes:
       - 'redis-store:/redis-data'
     networks:
