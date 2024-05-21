@@ -11,4 +11,5 @@ nginx/sourcegraph.key
 
 /right.dhall
 
-/.vnenv
+.venv/
+/docker-compose/.venv
