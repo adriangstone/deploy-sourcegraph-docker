@@ -10,3 +10,5 @@ nginx/sourcegraph.key
 /.env
 
 /right.dhall
+
+/.vnenv
